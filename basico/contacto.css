@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+* {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.container {
+  background: #ccc;
+  width: 100%;
+}
+
+.lista {
+  background: yellow;
+  box-shadow: 1px 3px 6px #000;
+}
+
+.lista li {
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.lista li:nth-child(2) {
+  background: white;
+}
+
+table {
+  border-collapse: collapse;
+  border: 5px solid red;
+}
+
+th,
+td {
+  border: 1px solid gainsboro;
+  padding: 6px;
+}
+
+tr td:first-child {
+  text-align: center;
+}
+
+tr th:last-child,
+tr td:last-child {
+  text-align: right;
+  background-color: lightblue;
+}
+
+form {
+  background-color: #f7f7f7;
+  width: 400px;
+  box-shadow: 1px 2px 3px #abc;
+  margin: 60px auto 60px auto;
+  padding: 20px;
+  border: 1px solid #abc;
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    background-color: lightblue;
+  }
+}
+
+form .input-group {
+  margin: 0px 30px;
+  display: flex;
+  margin-top: 10px;
+}
+
+form .input-group label {
+  margin: 6px 6px 0 0;
+  width: 160px;
+}
+
+form .input-group label::after {
+  content: " :";
+}
+
+input,
+select,
+button {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #abc;
+  border-radius: 3px;
+}

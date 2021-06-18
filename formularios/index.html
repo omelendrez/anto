@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numeros</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <div class="input-group">
+          <input id="input1" placeholder="Ingrese valor 1" type="number" />
+          <input id="input2" placeholder="Ingrese valor 2" type="number" />
+        </div>
+        <div class="input-group">
+          <button>Procesar</button>
+        </div>
+      </form>
+      <div class="resultados"></div>
+    </div>
+    <script type="module">
+      import {
+        suma,
+        resta,
+        multiplica,
+        divide,
+        eleva,
+        generarDiv,
+      } from "./index.js";
+      document.querySelector("button").onclick = (e) => {
+        e.preventDefault();
+        const valor1 = +document.querySelector("#input1").value;
+        const valor2 = +document.querySelector("#input2").value;
+        const resultados = document.querySelector(".resultados");
+
+        const operaciones = [
+          suma(valor1, valor2),
+          resta(valor1, valor2),
+          multiplica(valor1, valor2),
+          divide(valor1, valor2),
+          eleva(valor1, valor2),
+        ];
+
+        resultados.innerHTML = generarDiv(operaciones);
+      };
+    </script>
+  </body>
+</html>

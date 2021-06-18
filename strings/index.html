@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <div class="input-group">
+          <label>Ingrese el dato</label>
+          <input />
+        </div>
+        <div class="input-group">
+          <button>Procesar</button>
+        </div>
+      </form>
+      <div class="resultado"></div>
+      <div class="resultado resultado2"></div>
+      <div class="resultado resultado3"></div>
+    </div>
+    <script type="module">
+      import { ponerMayusculas, ponerMinusculas, revertir } from "./index.js";
+      document.querySelector("button").onclick = (e) => {
+        e.preventDefault();
+        const texto = document.querySelector("input").value;
+        document.querySelector(".resultado").innerHTML = ponerMayusculas(texto);
+        document.querySelector(".resultado2").innerHTML =
+          ponerMinusculas(texto);
+        document.querySelector(".resultado3").innerHTML = revertir(texto);
+      };
+    </script>
+  </body>
+</html>

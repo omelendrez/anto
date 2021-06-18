@@ -1,0 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+* {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 400px;
+  margin: 10px auto;
+}
+
+form .input-group,
+.resultado {
+  margin-top: 10px;
+  display: flex;
+}
+
+form .input-group label {
+  margin: 6px 6px 0 0;
+  width: 120px;
+}
+
+input,
+button {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #abc;
+  border-radius: 3px;
+}
+
+.resultado {
+  border: 1px solid #abc;
+  padding: 10px;
+  border-radius: 3px;
+}
