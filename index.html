@@ -16,8 +16,17 @@
     </div>
     <script type="module">
       import { generarTabla, generarTitulos } from "./index.js";
-      document.querySelector(".table thead").innerHTML = generarTitulos();
-      document.querySelector(".table tbody").innerHTML = generarTabla();
+
+      fetch("https://vmr.herokuapp.com/api/consultations?limit=100").then(
+        (response) =>
+          response.json().then((data) => {
+            const rows = data.consultations.rows;
+            document.querySelector(".table thead").innerHTML =
+              generarTitulos(rows);
+            document.querySelector(".table tbody").innerHTML =
+              generarTabla(rows);
+          })
+      );
     </script>
   </body>
 </html>
