@@ -34,7 +34,7 @@ export const clientes = [
     email: "",
     observations: "",
     balance: 0,
-    updatedAt: "2021-06-18T21:19:14.000Z",
+    : "2021-06-18T21:19:14.000Z",
     pets: [
       {
         id: 9054,

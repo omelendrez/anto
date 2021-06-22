@@ -1,9 +1,10 @@
-import { lista } from "./lista.js";
 
-const ocultarColumnas = ["edad", "apellido"];
+import { clientes } from "./lista.js";
+
+const ocultarColumnas = ["pets", "user", "updatedAt" , "email"];
 
 export const generarTitulos = () => {
-  const objeto = lista[0]; // Primer objeto de la lista
+  const objeto = clientes[0]; // Primer objeto de la lista
   const headers = Object.keys(objeto);
   const response = ["<tr>"];
   headers
@@ -14,14 +15,14 @@ export const generarTitulos = () => {
 };
 
 export const generarTabla = () => {
-  const objeto = lista[0];
+  const objeto = clientes[0];
   const headers = Object.keys(objeto); // ['name',  'edad', etc.]
   const response = [`<tr>`];
-  lista.forEach((objeto) => {
+  clientes.forEach((objeto) => {
     headers
       .filter((nombreColumna) => !ocultarColumnas.includes(nombreColumna))
-      .forEach((nombreColumna) => {
-        response.push(`<td>${objeto[nombreColumna]}</td>`);
+      .forEach((campo) => {
+        response.push(`<td>${objeto[campo]}</td>`);
       });
     response.push(`</tr>`);
   });
