@@ -13,20 +13,33 @@
         <thead></thead>
         <tbody></tbody>
       </table>
+      <div class="botones">
+        <button id="previous"><</button>
+        <div id="pageNumber"></div>
+        <button id="next">></button>
+      </div>
     </div>
     <script type="module">
-      import { generarTabla, generarTitulos } from "./index.js";
+      import { loadData } from "./index.js";
+      let page = 1;
+      document.getElementById("previous").setAttribute("disabled", true);
+      loadData(page);
 
-      fetch("https://vmr.herokuapp.com/api/consultations?limit=100").then(
-        (response) =>
-          response.json().then((data) => {
-            const rows = data.consultations.rows;
-            document.querySelector(".table thead").innerHTML =
-              generarTitulos(rows);
-            document.querySelector(".table tbody").innerHTML =
-              generarTabla(rows);
-          })
-      );
+      document.getElementById("previous").addEventListener("click", () => {
+        if (page > 1) {
+          page--;
+          if (page < 2) {
+            document.getElementById("previous").setAttribute("disabled", true);
+          }
+          loadData(page);
+        }
+      });
+
+      document.getElementById("next").addEventListener("click", () => {
+        page++;
+        document.getElementById("previous").removeAttribute("disabled");
+        loadData(page);
+      });
     </script>
   </body>
 </html>

@@ -27,3 +27,17 @@ th {
 tr:nth-child(even) {
   background-color: #eaeaea;
 }
+
+.botones {
+  display: flex;
+  margin: 10px;
+}
+
+.botones * {
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+.botones button {
+  cursor: pointer;
+}
