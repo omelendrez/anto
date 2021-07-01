@@ -9,36 +9,80 @@
   </head>
   <body>
     <div class="container">
+      <div class="inputs">
+        <input type="text" id="search" placeholder="Buscar" />
+        <select id="modelo">
+          <option value="customers">Clientes</option>
+          <option value="pets">Mascotas</option>
+          <option value="consultations">Consultas</option>
+          <option value="vaccinations">Vacunas</option>
+          <option value="dewormings">Desparasitación</option>
+        </select>
+      </div>
+
       <table class="table" border="1">
         <thead></thead>
         <tbody></tbody>
       </table>
+
       <div class="botones">
         <button id="previous"><</button>
         <div id="pageNumber"></div>
         <button id="next">></button>
+        <select id="records">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+        <div id="totalRecords"></div>
       </div>
     </div>
     <script type="module">
       import { loadData } from "./index.js";
-      let page = 1;
+      const dataParameters = {
+        page: 1,
+        records: 5,
+        search: "",
+        model: "customers",
+      };
       document.getElementById("previous").setAttribute("disabled", true);
-      loadData(page);
+      loadData(dataParameters);
 
       document.getElementById("previous").addEventListener("click", () => {
+        let { page } = dataParameters;
         if (page > 1) {
           page--;
+          dataParameters.page = page;
           if (page < 2) {
             document.getElementById("previous").setAttribute("disabled", true);
           }
-          loadData(page);
+          loadData(dataParameters);
         }
       });
 
       document.getElementById("next").addEventListener("click", () => {
+        let { page } = dataParameters;
         page++;
+        dataParameters.page = page;
         document.getElementById("previous").removeAttribute("disabled");
-        loadData(page);
+        loadData(dataParameters);
+      });
+
+      document.getElementById("records").addEventListener("change", (e) => {
+        dataParameters.records = e.target.value;
+        loadData(dataParameters);
+      });
+
+      document.getElementById("search").addEventListener("keypress", (e) => {
+        if (e.code === "Enter" || e.code === "NumpadEnter") {
+          dataParameters.search = e.target.value;
+          loadData(dataParameters);
+        }
+      });
+
+      document.getElementById("modelo").addEventListener("change", (e) => {
+        dataParameters.model = e.target.value;
+        loadData(dataParameters);
       });
     </script>
   </body>
